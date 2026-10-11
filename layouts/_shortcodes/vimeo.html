@@ -1,0 +1,5 @@
+{{/* {{< vimeo id="VIDEO_ID" >}} */}}
+<figure class="media media-embed">
+  <iframe src="https://player.vimeo.com/video/{{ .Get "id" | default (.Get 0) }}?dnt=1" title="{{ .Get "title" | default "Vimeo video" }}"
+          allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</figure>

@@ -1,0 +1,7 @@
+{{/* Local video file from the project folder, plays like a GIF by default.
+     {{< video src="clip.mp4" >}}   add controls=true for a normal player */}}
+{{ with .Page.Resources.Get (.Get "src") }}
+<figure class="media">
+  <video src="{{ .RelPermalink }}" {{ if eq ($.Get "controls") "true" }}controls{{ else }}autoplay muted loop playsinline{{ end }} preload="metadata"></video>
+</figure>
+{{ end }}

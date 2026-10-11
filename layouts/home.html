@@ -1,0 +1,4 @@
+{{ define "main" }}
+  {{ with site.Params.tagline }}<h1 class="tagline">{{ . }}</h1>{{ end }}
+  {{ partial "grid.html" . }}
+{{ end }}

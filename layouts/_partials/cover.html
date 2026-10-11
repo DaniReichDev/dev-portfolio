@@ -1,0 +1,14 @@
+{{/* Square grid tile image. Uses the first image named cover.* in the project folder. */}}
+{{ $cover := .Resources.GetMatch "cover.*" }}
+{{ if $cover }}
+  {{ if eq $cover.MediaType.SubType "gif" }}
+    <img src="{{ $cover.RelPermalink }}" alt="" loading="lazy">
+  {{ else }}
+    {{ $sm := $cover.Fill "600x600 webp smart" }}
+    {{ $lg := $cover.Fill "1000x1000 webp smart" }}
+    <img src="{{ $lg.RelPermalink }}" srcset="{{ $sm.RelPermalink }} 600w, {{ $lg.RelPermalink }} 1000w"
+         sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw" alt="" loading="lazy">
+  {{ end }}
+{{ else }}
+  <span class="tile-placeholder" aria-hidden="true"></span>
+{{ end }}

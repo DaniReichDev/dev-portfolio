@@ -1,0 +1,17 @@
+{{/* Full-width image from the project folder.
+     {{< img src="shot.png" alt="..." caption="optional" >}} */}}
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ with .Page.Resources.Get $src }}
+<figure class="media">
+  {{ if or (eq .MediaType.SubType "gif") (eq .MediaType.SubType "svg") }}
+    <img src="{{ .RelPermalink }}" alt="{{ $alt }}" loading="lazy">
+  {{ else }}
+    {{ $w := cond (gt .Width 1600) (.Resize "1600x webp") (.Resize (printf "%dx webp" .Width)) }}
+    <img src="{{ $w.RelPermalink }}" width="{{ $w.Width }}" height="{{ $w.Height }}" alt="{{ $alt }}" loading="lazy">
+  {{ end }}
+  {{ with $.Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
+{{ else }}
+  {{ warnf "img shortcode: %q not found in %s" $src .Page.File.Path }}
+{{ end }}

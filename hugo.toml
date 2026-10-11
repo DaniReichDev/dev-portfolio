@@ -1,0 +1,33 @@
+baseURL = "https://danireichdev.github.io/portfolio/"
+locale = "en-us"
+title = "Dani Reich"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term", "rss"]
+
+[params]
+  tagline = "Unity Developer and Technical Artist"
+  description = "Portfolio of Dani Reich, Unity developer and technical artist."
+  linkedin = "https://www.linkedin.com/in/dani-reich-693b19192"
+  resume = "resume/Dani-Reich-CV.pdf"
+
+[menus]
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 10
+  [[menus.main]]
+    name = "Work"
+    pageRef = "/"
+    weight = 20
+  [[menus.main]]
+    name = "Resume"
+    url = "resume/Dani-Reich-CV.pdf"
+    weight = 30
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[imaging]
+  resampleFilter = "lanczos"
+  [imaging.webp]
+    quality = 85

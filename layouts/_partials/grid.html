@@ -1,0 +1,11 @@
+<section class="project-grid" aria-label="Projects">
+  {{ range (site.GetPage "/projects").Pages.ByWeight }}
+    <a class="project-tile" href="{{ .RelPermalink }}">
+      {{ partial "cover.html" . }}
+      <span class="tile-overlay">
+        <span class="tile-title">{{ .Title }}</span>
+        {{ with .Params.subtitle }}<span class="tile-subtitle">{{ . }}</span>{{ end }}
+      </span>
+    </a>
+  {{ end }}
+</section>

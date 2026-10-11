@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <article class="project">
+    <header class="project-header">
+      <h1 class="project-title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
+    </header>
+
+    <div class="project-body">
+      {{ .Content }}
+    </div>
+
+    <nav class="project-pager" aria-label="More projects">
+      {{ $pages := (site.GetPage "/projects").Pages.ByWeight }}
+      {{ with $pages.Next . }}<a class="pager-prev" href="{{ .RelPermalink }}">&larr; {{ .Title }}</a>{{ else }}<span></span>{{ end }}
+      <a class="pager-all" href="{{ site.Home.RelPermalink }}">All work</a>
+      {{ with $pages.Prev . }}<a class="pager-next" href="{{ .RelPermalink }}">{{ .Title }} &rarr;</a>{{ else }}<span></span>{{ end }}
+    </nav>
+  </article>
+{{ end }}

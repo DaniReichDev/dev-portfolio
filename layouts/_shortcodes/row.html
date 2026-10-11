@@ -1,0 +1,13 @@
+{{/* Images side by side. {{< row "a.png" "b.png" "c.png" >}} */}}
+<div class="media-row">
+  {{ range .Params }}
+    {{ with $.Page.Resources.Get . }}
+      {{ if eq .MediaType.SubType "gif" }}
+        <img src="{{ .RelPermalink }}" alt="" loading="lazy">
+      {{ else }}
+        {{ $w := .Resize "1000x webp" }}
+        <img src="{{ $w.RelPermalink }}" width="{{ $w.Width }}" height="{{ $w.Height }}" alt="" loading="lazy">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</div>
